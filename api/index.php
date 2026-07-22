@@ -1,11 +1,7 @@
+
 <?php
-$json_path = $_SERVER['DOCUMENT_ROOT'] . '/api/data.json';
-if (!file_exists($json_path)) {
-    // Fallback jika dibaca dari direktori relatif fungsi Vercel
-    $json_path = __DIR__ . '/data.json';
+$data = json_decode(file_get_contents('./data.json'), true);
 }
-$data = json_decode(file_get_contents($json_path), true);
-$slug = $_GET['id'] ?? 'willy';
 
 if (!isset($data[$slug])) {
     die("Kontak tidak ditemukan.");
